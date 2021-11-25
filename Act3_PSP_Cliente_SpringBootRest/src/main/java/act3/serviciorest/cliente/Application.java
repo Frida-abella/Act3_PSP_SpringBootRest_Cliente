@@ -146,17 +146,23 @@ public class Application implements CommandLineRunner {
 		
 		
 		case 6:
-			 
 			System.out.println("Cerrando la aplicación....");
-			//context.close();
-		
+			pararAplicacion();
 			break;
-			
 		}
+		
 		
 		sc.close();
 		scanner.close();
 	}
-
+	
+	public void pararAplicacion() {
+		// Cerramos el servidor web con el el metodo exit de la clase SpringApplication
+		// Le pasamos el contexto de Spring y un objeto que implemente la interfaz ExitCodeGenerator. 
+		// Usaremos la funcion lambda "() -> 0" para simplificar 
+		
+		SpringApplication.exit(context, () -> 0);
+	
+	}
 } 
 
